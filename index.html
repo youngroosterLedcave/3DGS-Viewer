@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3DGS Viewer</title>
-  <style>
-    body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; width: 100%; background: #000; }
-    canvas { display: block; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3DGS Viewer</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #202020; }
+        canvas { display: block; }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-  <script type="module" src="viewer.js"></script>
+    <div id="loading">Lade Modell...</div>
+    <script type="module" src="viewer.js"></script>
+    <script>
+        // Loader-Text ausblenden, wenn das Modell geladen ist
+        document.addEventListener("model-loaded", () => {
+            document.getElementById("loading").style.display = "none";
+        });
+    </script>
 </body>
 </html>
